@@ -1,0 +1,77 @@
+{
+	"name": "taro-react-tailwind-template",
+	"version": "1.0.0",
+	"private": true,
+	"description": "",
+	"templateInfo": {
+		"name": "default",
+		"typescript": true,
+		"css": "sass"
+	},
+	"browserslist": [
+		"last 3 versions",
+		"Android >= 4.1",
+		"ios >= 8"
+	],
+	"author": "",
+	"scripts": {
+		"build:weapp": "taro build --type weapp",
+		"build:h5": "taro build --type h5",
+		"dev:weapp": "npm run build:weapp -- --watch",
+		"dev:h5": "npm run build:h5 -- --watch",
+		"postinstall": "weapp-tw patch"
+	},
+	"dependencies": {
+		"@babel/runtime": "^7.28.3",
+		"@tarojs/components": "4.1.11",
+		"@tarojs/helper": "4.1.11",
+		"@tarojs/plugin-framework-react": "4.1.11",
+		"@tarojs/plugin-platform-h5": "4.1.11",
+		"@tarojs/plugin-platform-weapp": "4.1.11",
+		"@tarojs/react": "4.1.11",
+		"@tarojs/runtime": "4.1.11",
+		"@tarojs/shared": "4.1.11",
+		"@tarojs/taro": "4.1.11",
+		"@weapp-tailwindcss/merge-v3": "^0.1.6",
+		"clsx": "^2.1.1",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.28.3",
+		"@babel/preset-react": "^7.27.1",
+		"@pmmmwh/react-refresh-webpack-plugin": "^0.6.1",
+		"@tarojs/cli": "4.1.11",
+		"@tarojs/webpack5-runner": "4.1.11",
+		"@types/node": "^22.15.29",
+		"@types/react": "^18.3.12",
+		"@types/webpack-env": "^1.18.8",
+		"@typescript-eslint/eslint-plugin": "^8.39.1",
+		"@typescript-eslint/parser": "^8.39.1",
+		"babel-preset-taro": "4.1.11",
+		"baseline-browser-mapping": "^2.10.7",
+		"eslint": "9.26.0",
+		"eslint-config-taro": "4.1.11",
+		"eslint-plugin-import": "^2.32.0",
+		"eslint-plugin-react": "^7.37.5",
+		"eslint-plugin-react-hooks": "^5.2.0",
+		"postcss": "^8.5.6",
+		"postcss-rem-to-responsive-pixel": "^6.0.2",
+		"react-refresh": "^0.17.0",
+		"stylelint": "^16.23.1",
+		"tailwindcss": "^3.4.19",
+		"ts-node": "^10.9.2",
+		"tsconfig-paths-webpack-plugin": "^4.2.0",
+		"typescript": "^5.9.3",
+		"weapp-ide-cli": "^5.0.4",
+		"weapp-tailwindcss": "^4.10.3",
+		"webpack": "5.104.1"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"@weapp-tailwindcss/merge-v3",
+			"weapp-tailwindcss"
+		]
+	},
+	"packageManager": "pnpm@10.29.3"
+}

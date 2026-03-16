@@ -1,0 +1,16 @@
+.mask-icon-base {
+  display: inline-block;
+  /* 神奇的桥梁：让背景色自动跟随文本颜色 */
+  background-color: currentColor;
+
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+
+  /* 从 CSS 变量中读取 url，而不是写死 */
+  -webkit-mask-image: var(--icon-mask);
+  mask-image: var(--icon-mask);
+}
