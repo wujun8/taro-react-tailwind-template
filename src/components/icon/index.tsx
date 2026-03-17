@@ -1,5 +1,5 @@
-import './index.scss'
 import {View} from "@tarojs/components";
+import './index.scss';
 
 function getSvgUrl(mod: string | { default?: string }): string {
   if (typeof mod === 'string') return mod

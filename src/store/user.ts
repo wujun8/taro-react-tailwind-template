@@ -1,10 +1,10 @@
 import { create } from 'zustand'
+import { persist, createJSONStorage } from 'zustand/middleware'
 import Taro from '@tarojs/taro'
-import { STORAGE_KEYS } from '@/constants'
-
 /** 用户信息类型 */
 interface UserInfo {
   id: string
+  mobile: string
   nickname: string
   avatar: string
 }
@@ -28,47 +28,38 @@ interface UserState {
 }
 
 /**
- * 用户全局状态管理
- *
- * @example
- * ```tsx
- * import { useUserStore } from '@/store'
- *
- * const MyPage = () => {
- *   const { userInfo, isLoggedIn, login, logout } = useUserStore()
- *
- *   return (
- *     <View>
- *       {isLoggedIn ? <Text>{userInfo?.nickname}</Text> : <Text>未登录</Text>}
- *     </View>
- *   )
- * }
- * ```
+ * 用户全局状态管理 (使用 persist 中间件自动持久化)
  */
-export const useUserStore = create<UserState>((set) => ({
-  token: Taro.getStorageSync(STORAGE_KEYS.TOKEN) || '',
-  userInfo: Taro.getStorageSync(STORAGE_KEYS.USER_INFO) || null,
-  isLoggedIn: !!Taro.getStorageSync(STORAGE_KEYS.TOKEN),
+export const useUserStore = create<UserState>()(
+  persist(
+    (set) => ({
+      token: '',
+      userInfo: null,
+      isLoggedIn: false,
 
-  setToken: (token) => {
-    Taro.setStorageSync(STORAGE_KEYS.TOKEN, token)
-    set({ token, isLoggedIn: !!token })
-  },
+      setToken: (token) => {
+        set({ token, isLoggedIn: !!token })
+      },
 
-  setUserInfo: (userInfo) => {
-    Taro.setStorageSync(STORAGE_KEYS.USER_INFO, userInfo)
-    set({ userInfo })
-  },
+      setUserInfo: (userInfo) => {
+        set({ userInfo })
+      },
 
-  login: (token, userInfo) => {
-    Taro.setStorageSync(STORAGE_KEYS.TOKEN, token)
-    Taro.setStorageSync(STORAGE_KEYS.USER_INFO, userInfo)
-    set({ token, userInfo, isLoggedIn: true })
-  },
+      login: (token, userInfo) => {
+        set({ token, userInfo, isLoggedIn: true })
+      },
 
-  logout: () => {
-    Taro.removeStorageSync(STORAGE_KEYS.TOKEN)
-    Taro.removeStorageSync(STORAGE_KEYS.USER_INFO)
-    set({ token: '', userInfo: null, isLoggedIn: false })
-  },
-}))
+      logout: () => {
+        set({ token: '', userInfo: null, isLoggedIn: false })
+      },
+    }),
+    {
+      name: 'user-storage',
+      storage: createJSONStorage(() => ({
+        getItem: (name) => Taro.getStorageSync(name),
+        setItem: (name, value) => Taro.setStorageSync(name, value),
+        removeItem: (name) => Taro.removeStorageSync(name),
+      })),
+    }
+  )
+)

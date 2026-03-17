@@ -5,3 +5,4 @@
 
 export { request } from './request'
 export { checkForUpdate } from './update'
+export { randomUUID } from './uuid'
