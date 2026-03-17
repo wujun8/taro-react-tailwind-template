@@ -19,7 +19,9 @@
 		"build:h5": "taro build --type h5",
 		"dev:weapp": "npm run build:weapp -- --watch",
 		"dev:h5": "npm run build:h5 -- --watch",
-		"postinstall": "weapp-tw patch"
+		"postinstall": "weapp-tw patch",
+		"prepare": "husky",
+		"lint": "eslint src --ext .ts,.tsx --fix"
 	},
 	"dependencies": {
 		"@babel/runtime": "^7.28.3",
@@ -35,13 +37,17 @@
 		"@weapp-tailwindcss/merge-v3": "^0.1.6",
 		"clsx": "^2.1.1",
 		"react": "^18.3.1",
-		"react-dom": "^18.3.1"
+		"react-dom": "^18.3.1",
+		"zustand": "^5.0.5"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.28.3",
 		"@babel/preset-react": "^7.27.1",
+		"@commitlint/cli": "^19.8.1",
+		"@commitlint/config-conventional": "^19.8.1",
 		"@pmmmwh/react-refresh-webpack-plugin": "^0.6.1",
 		"@tarojs/cli": "4.1.11",
+		"@tarojs/taro-loader": "^4.1.11",
 		"@tarojs/webpack5-runner": "4.1.11",
 		"@types/node": "^22.15.29",
 		"@types/react": "^18.3.12",
@@ -55,6 +61,8 @@
 		"eslint-plugin-import": "^2.32.0",
 		"eslint-plugin-react": "^7.37.5",
 		"eslint-plugin-react-hooks": "^5.2.0",
+		"husky": "^9.1.7",
+		"lint-staged": "^16.1.0",
 		"postcss": "^8.5.6",
 		"postcss-rem-to-responsive-pixel": "^6.0.2",
 		"react-refresh": "^0.17.0",

@@ -7,3 +7,13 @@ node_modules/
 /.swc/
 /.idea/
 /.vscode/
+
+# 编辑器临时文件
+*.swp
+*.swo
+
+# 系统文件
+Thumbs.db
+
+# 微信开发者工具私有配置（含个人编译条件等，不应入库）
+project.private.config.json
