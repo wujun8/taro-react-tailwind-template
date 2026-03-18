@@ -1,9 +1,9 @@
 import { UnifiedWebpackPluginV5 } from "weapp-tailwindcss/webpack";
 import { defineConfig, type UserConfigExport } from '@tarojs/cli'
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin'
+import path from "node:path";
 import devConfig from './dev'
 import prodConfig from './prod'
-import path from "node:path";
 // https://docs.taro.zone/docs/envs#processenvtaro_env
 // const isH5 = process.env.TARO_ENV === "h5";
 // const isApp = process.env.TARO_ENV === "rn";
@@ -12,18 +12,20 @@ export default defineConfig(async (merge) => {
   const baseConfig: UserConfigExport = {
     projectName: 'taro-react-tailwind-template',
     date: '2023-5-6',
-    designWidth: 750,
+    // NutUI 按 375 设计稿适配，与官方 Taro + NutUI 方案一致（Tailwind 建议多用 rpx 或相对单位）
+    designWidth: 375,
     deviceRatio: {
       640: 2.34 / 2,
       750: 1,
-      828: 1.81 / 2
+      828: 1.81 / 2,
+      375: 2 / 1,
     },
     sourceRoot: 'src',
     outputRoot: 'dist',
     alias: {
       '@': path.resolve(__dirname, '../src'),
     },
-    plugins: [],
+    plugins: ['@tarojs/plugin-html'],
     defineConstants: {
     },
     copy: {
@@ -85,10 +87,11 @@ export default defineConfig(async (merge) => {
         });
       },
       sassLoaderOption: {
+        additionalData: `@import "@nutui/nutui-react-taro/dist/styles/variables.scss";`,
         sassOptions: {
           silenceDeprecations: ['legacy-js-api', 'import'],
-        }
-      }
+        },
+      },
     },
     h5: {
       publicPath: '/',
@@ -117,7 +120,13 @@ export default defineConfig(async (merge) => {
       },
       webpackChain(chain) {
         chain.resolve.plugin('tsconfig-paths').use(TsconfigPathsPlugin)
-      }
+      },
+      sassLoaderOption: {
+        additionalData: `@import "@nutui/nutui-react-taro/dist/styles/variables.scss";`,
+        sassOptions: {
+          silenceDeprecations: ['legacy-js-api', 'import'],
+        },
+      },
     }
   }
   if (process.env.NODE_ENV === 'development') {

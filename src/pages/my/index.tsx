@@ -1,12 +1,48 @@
-import { View, Text } from "@tarojs/components";
+import { View } from '@tarojs/components'
+import { Button, Cell } from '@nutui/nutui-react-taro'
+import { useUserStore } from '@/store'
+import { checkForUpdate, randomUUID } from '@/utils'
 
 const My = () => {
-  return (
-    <View className='flex flex-col items-center justify-center min-h-screen bg-gray-50'>
-      <Text className='text-2xl font-bold text-gray-800 mt-[20vh]'>我的 页面</Text>
-      <Text className='text-sm mt-4 text-gray-500'>这是个人中心示例页面</Text>
-    </View>
-  );
-};
+  // 不可写成 useUserStore(s => ({ ... }))：每次返回新对象会触发无限更新（React #185）
+  const userInfo = useUserStore((s) => s.userInfo)
+  const isLoggedIn = useUserStore((s) => s.isLoggedIn)
+  const login = useUserStore((s) => s.login)
+  const logout = useUserStore((s) => s.logout)
 
-export default My;
+  const handleDemoLogin = () => {
+    login(`token_${randomUUID()}`, {
+      id: randomUUID().slice(0, 8),
+      nickname: '演示用户',
+      mobile: '',
+      avatar: '',
+    })
+  }
+
+  return (
+    <View className='min-h-screen box-border bg-page pb-custom-tab-bar'>
+      <Cell.Group title='账号（Zustand 示例）'>
+        <Cell
+          title='状态'
+          description={isLoggedIn ? `已登录 · ${userInfo?.nickname ?? ''}` : '未登录'}
+        />
+      </Cell.Group>
+      <View className='px-3 mt-3 flex flex-col gap-2'>
+        {!isLoggedIn ? (
+          <Button type='primary' block onClick={handleDemoLogin}>
+            演示登录（非真实鉴权）
+          </Button>
+        ) : (
+          <Button type='default' block onClick={() => logout()}>
+            退出登录
+          </Button>
+        )}
+        <Button type='success' plain block onClick={() => checkForUpdate(true)}>
+          检查小程序更新
+        </Button>
+      </View>
+    </View>
+  )
+}
+
+export default My

@@ -5,6 +5,9 @@ export default defineAppConfig({
     'pages/my/index'
   ],
   lazyCodeLoading: 'requiredComponents',
+  /** 隐私检测请在微信公众平台后台开启；部分开发者工具会报 app.json 非法字段，故不写 usePrivacyCheck */
+  darkmode: true,
+  themeLocation: 'theme.json',
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#fff',

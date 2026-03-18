@@ -37,11 +37,11 @@ export default function CustomTabBar() {
               <View className={`transition-all duration-300 ${isSelected ? '-translate-y-1' : ''}`}>
                 <Icon
                   name={item.icon}
-                  className={`w-7 h-7 transition-colors duration-300 ${isSelected ? 'text-blue-500' : 'text-gray-400'}`}
+                  className={`w-7 h-7 transition-colors duration-300 ${isSelected ? 'text-teal-600' : 'text-gray-400'}`}
                 />
               </View>
               <Text
-                className={`text-xs mt-1 font-medium transition-colors duration-300 ${isSelected ? 'text-blue-500' : 'text-gray-400'}`}
+                className={`text-xs mt-1 font-medium transition-colors duration-300 ${isSelected ? 'text-teal-600' : 'text-gray-400'}`}
               >
                 {item.text}
               </Text>

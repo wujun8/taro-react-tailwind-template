@@ -25,6 +25,7 @@
 	},
 	"dependencies": {
 		"@babel/runtime": "^7.28.3",
+		"@nutui/nutui-react-taro": "^2.7.15",
 		"@tarojs/components": "4.1.11",
 		"@tarojs/helper": "4.1.11",
 		"@tarojs/plugin-framework-react": "4.1.11",
@@ -47,6 +48,7 @@
 		"@commitlint/config-conventional": "^19.8.1",
 		"@pmmmwh/react-refresh-webpack-plugin": "^0.6.1",
 		"@tarojs/cli": "4.1.11",
+		"@tarojs/plugin-html": "^4.1.11",
 		"@tarojs/taro-loader": "^4.1.11",
 		"@tarojs/webpack5-runner": "4.1.11",
 		"@types/node": "^22.15.29",
