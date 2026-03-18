@@ -6,6 +6,7 @@ export default {
   },
   defineConstants: {
     BASE_URL: '"http://localhost:3000/api"',
+    APP_VERSION: `"${require('../package.json').version}"`,
   },
   mini: {},
   h5: {}

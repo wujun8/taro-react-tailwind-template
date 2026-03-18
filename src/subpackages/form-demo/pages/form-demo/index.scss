@@ -1,0 +1,23 @@
+.form-demo-page {
+  /* NutUI FormItem 的 label 区域默认偏宽：这里收窄左侧留白 */
+  .nut-form-item-label {
+    min-width: 48px;
+    width: 48px;
+    flex: 0 0 48px;
+  }
+
+  /* 让输入区吃满剩余空间，避免“备注”显得很窄 */
+  .nut-form-item-body,
+  .nut-form-item-body-slots {
+    flex: 1 1 auto;
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* TextArea/输入控件尽量全宽 */
+  .nut-textarea,
+  .nut-input {
+    width: 100%;
+  }
+}
+

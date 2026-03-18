@@ -3,6 +3,7 @@ import type { UserConfigExport } from "@tarojs/cli";
 export default {
   defineConstants: {
     BASE_URL: '"https://your-domain.com/api"',
+    APP_VERSION: `"${require('../package.json').version}"`,
   },
   cache: {
     enable: true // Webpack 持久化缓存配置，开启可大幅加快二次编译速度
