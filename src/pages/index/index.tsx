@@ -26,7 +26,8 @@ const Index = () => {
           <View className="u-count-down__text text-[40px] text-center before:content-['taro-react-tailwind-template']"></View>
         </View>
       </View>
-      <View className='space-y-4 flex flex-col items-center'>
+      <View className='flex flex-col items-center gap-4'>
+
         <View className="after:mx-auto after:text-center after:block after:content-['这是一个小程序taro_react_tailwindcss的模板'] after:text-lime-700"></View>
         <View
           className="rounded-lg p-1 bg-gray-100 dark:bg-zinc-800 h-20 w-40 after:text-xs after:content-['this_is_a_hover_block.have_a_try!']"

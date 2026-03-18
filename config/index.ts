@@ -71,9 +71,15 @@ export default defineConfig(async (merge) => {
               args: [
                 {
                   appType: 'taro',
-                  rem2rpx: true
+                  rem2rpx: true,
+                  // Disable generating rules with tag selectors like view + view
+                  cssPreprocess: (content) => {
+                    // Match and remove rules like .space-y-4 > view + view
+                    return content.replace(/\.space-[xy]-\d+\s*>\s*[a-z-]+\s*\+\s*[a-z-]+/g, '')
+                  }
                 }
               ]
+
             }
           }
         });
