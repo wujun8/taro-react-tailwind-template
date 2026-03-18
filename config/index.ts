@@ -86,12 +86,6 @@ export default defineConfig(async (merge) => {
           }
         });
       },
-      sassLoaderOption: {
-        additionalData: `@import "@nutui/nutui-react-taro/dist/styles/variables.scss";`,
-        sassOptions: {
-          silenceDeprecations: ['legacy-js-api', 'import'],
-        },
-      },
     },
     h5: {
       publicPath: '/',
@@ -120,12 +114,6 @@ export default defineConfig(async (merge) => {
       },
       webpackChain(chain) {
         chain.resolve.plugin('tsconfig-paths').use(TsconfigPathsPlugin)
-      },
-      sassLoaderOption: {
-        additionalData: `@import "@nutui/nutui-react-taro/dist/styles/variables.scss";`,
-        sassOptions: {
-          silenceDeprecations: ['legacy-js-api', 'import'],
-        },
       },
     }
   }

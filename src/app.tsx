@@ -1,7 +1,8 @@
 import { Fragment, PropsWithChildren } from 'react'
 import { useLaunch } from '@tarojs/taro'
 import { View, Button as TaroButton, Text } from '@tarojs/components'
-import '@nutui/nutui-react-taro/dist/style.css'
+import '@nutui/nutui-react-taro/dist/style.scss'
+import '@/styles/custom_theme.scss'
 import { initWeappPrivacyAuthorization } from '@/utils/privacy-weapp'
 import './app.scss'
 
